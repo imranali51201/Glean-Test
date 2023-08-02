@@ -13,6 +13,5 @@ export async function POST(req: Request) {
     if (!validation.success) {
         return NextResponse.json({ message: validation.error.message }, { status: 400 });
     }
-    const { description, title } = body;
-    return NextResponse.json({ title, description });
+    return NextResponse.json({ title: body?.title, description: body?.description });
 }
