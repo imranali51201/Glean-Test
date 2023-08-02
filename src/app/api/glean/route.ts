@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { Request } from '../types';
 import { CreateGleanType } from './dto';
 import Zod, { z } from 'zod';
 
@@ -8,7 +7,7 @@ const CreateGleanSchema = z.object({
     description: z.string().optional(),
 });
 
-export async function POST(req: Request<CreateGleanType>) {
+export async function POST(req: Request) {
     const { body } = req;
     const validation = CreateGleanSchema.safeParse(body);
     if (!validation.success) {
