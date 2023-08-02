@@ -1,7 +1,7 @@
 import { Button, Input } from '@src/components';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 type AddContentFormProps = {
     onClickCreateGlean: VoidFunction
@@ -10,6 +10,14 @@ type AddContentFormProps = {
 function AddContentForm(props: AddContentFormProps) {
     const { onClickCreateGlean } = props;
     const [link, setLink] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const onAddLink = useCallback(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+    }, [])
 
     return (
         <div className='flex flex-col items-center text-center w-full sm:w-[333px]'>
@@ -46,6 +54,8 @@ function AddContentForm(props: AddContentFormProps) {
                 <AnimatePresence>
                     {!!link && (
                         <Button
+                            loading={loading}
+                            onClick={onAddLink}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 100 }}
                             exit={{ opacity: 0 }}
