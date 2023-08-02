@@ -33,7 +33,7 @@ function CreatorFlowModal({ }, ref: Ref<CreatorFlowModalRef>) {
       method: 'POST',
       body: JSON.stringify(props)
     });
-    setCurrentStep("success-form")
+    setCurrentStep('success-form');
   }, []);
 
   const allSteps = useMemo(() => ([

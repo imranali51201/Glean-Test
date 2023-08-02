@@ -13,11 +13,11 @@ function AddContentForm(props: AddContentFormProps) {
     const [loading, setLoading] = useState(false);
 
     const onAddLink = useCallback(() => {
-        setLoading(true)
+        setLoading(true);
         setTimeout(() => {
-            setLoading(false)
+            setLoading(false);
         }, 1000);
-    }, [])
+    }, []);
 
     return (
         <div className='flex flex-col items-center text-center w-full sm:w-[333px]'>

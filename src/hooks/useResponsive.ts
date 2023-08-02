@@ -4,10 +4,10 @@ type QueryTypes = 'is' | 'between' | 'greaterThan' | 'smallerThan';
 type BreakPointsType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export default function useResponsive(query: QueryTypes, breakpoints: BreakPointsType | [BreakPointsType, BreakPointsType]) {
-    const [currentWidth, setCurrentWidth] = useState(window.document.body.clientWidth);
+    const [currentWidth, setCurrentWidth] = useState(typeof window !== 'undefined' ? window.document.body.clientWidth : 0);
 
     useEffect(() => {
-        window.addEventListener('resize', () => setCurrentWidth(window.document.body.clientWidth));
+        window.addEventListener('resize', () => setCurrentWidth(typeof window !== 'undefined' ? window.document.body.clientWidth : 0));
     }, []);
 
     const breakpointsSizes = {
