@@ -33,8 +33,8 @@ function CreatorFlowModal({ }, ref: Ref<CreatorFlowModalRef>) {
       method: 'POST',
       body: JSON.stringify(props)
     });
-    onClose();
-  }, [onClose]);
+    setCurrentStep("success-form")
+  }, []);
 
   const allSteps = useMemo(() => ([
     {
@@ -75,7 +75,7 @@ function CreatorFlowModal({ }, ref: Ref<CreatorFlowModalRef>) {
         />
       )
     }
-  ]), [onClose]);
+  ]), [onClose, onAddGlean]);
 
   const modalCardClassName = classNames(
     'bg-[#181818cc] backdrop-blur-[25px] p-[36px] rounded-t-[40px]',
